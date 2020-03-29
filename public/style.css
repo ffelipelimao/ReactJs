@@ -1,0 +1,80 @@
+html * {
+  font-family: "Roboto";
+  color: #ffffff;
+}
+.navbar-light .navbar-brand {
+  color: #ffffff;
+}
+.nav-link:hover {
+  color: #fd675c;
+
+  border-bottom: 5px solid;
+}
+
+.nav-link {
+  color: #ffffff;
+}
+
+.fixed-top {
+  background-color: #242a38;
+}
+
+.style-menu {
+  background-color: #242a38;
+}
+
+body {
+  background-color: #242a38;
+}
+
+.card {
+  background-color: #3c4258 !important;
+  max-width: 550px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #fd675c;
+  border-color: #fd675c;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #d1564d;
+  border-color: #d1564d;
+}
+
+.text-muted {
+  color: #fff !important;
+}
+
+#cardfix {
+  margin-top: 100px !important;
+}
+.form-control {
+  width: 350px;
+  margin-bottom: 45px;
+}
+
+#cardfixlogin {
+  margin-top: 200px !important;
+}
+
+#exampleFormControlTextarea1 {
+  width: 1000px;
+}
+
+#exampleFormControlTextareaRead {
+  width: 1000px;
+  margin-top: 45px;
+}
+
+.form-control-movie {
+  width: 300px;
+}
+.float-right {
+  margin-right: 400px !important;
+}
+#cardMain {
+  margin-left: 200px;
+}
