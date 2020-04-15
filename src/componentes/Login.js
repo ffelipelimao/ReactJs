@@ -30,6 +30,16 @@ class Login extends Component {
       });
   }
 
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      this.setState({
+        isAuthing: false,
+        isAuth: !!user,
+        user,
+      });
+    });
+  }
+
   render() {
     if (this.state.isAuth) {
       return <Redirect to="/novofilme" />;

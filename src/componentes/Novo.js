@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 import { auth } from "./../config_firebase";
+
+const api = {
+  baseUrl: "http://localhost:8080/critica/",
+};
 
 class Novo extends Component {
   constructor(props) {
@@ -12,6 +17,7 @@ class Novo extends Component {
       isAuthing: true,
       user: null,
     };
+    this.gravaFilme = this.gravaFilme.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +28,31 @@ class Novo extends Component {
         user,
       });
     });
+  }
+
+  gravaFilme(e) {
+    const filme = {
+      name: this.name.value,
+      image: this.image.value,
+      genero: this.genero.value,
+      conteudo: this.conteudo.value,
+      nota: {
+        direcao: this.direcao.value,
+        fotografia: this.fotografia.value,
+        atuacao: this.atuacao.value,
+        roteiro: this.roteiro.value,
+      },
+    };
+    console.log(filme);
+    axios
+      .post(api.baseUrl, filme)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    e.preventDefault();
   }
 
   render() {
@@ -36,11 +67,21 @@ class Novo extends Component {
         className="d-flex justify-content-right align-items-center container"
         id="cardfixlogin"
       >
-        <form>
+        <form onSubmit={this.gravaFilme}>
           <div className="form-group">
             <label for="formGroupExampleInput">Nome do Filme</label>
             <input
               type="text"
+              ref={(ref) => (this.name = ref)}
+              className="form-control"
+              id="formGroupExampleInput"
+            />
+          </div>
+          <div className="form-group">
+            <label for="formGroupExampleInput">Genero</label>
+            <input
+              type="text"
+              ref={(ref) => (this.genero = ref)}
               className="form-control"
               id="formGroupExampleInput"
             />
@@ -49,6 +90,7 @@ class Novo extends Component {
             <label for="formGroupExampleInput2">URL da imagem</label>
             <input
               type="text"
+              ref={(ref) => (this.image = ref)}
               className="form-control"
               id="formGroupExampleInput2"
             />
@@ -57,6 +99,7 @@ class Novo extends Component {
             <label for="exampleFormControlTextarea1">Texto</label>
             <textarea
               class="form-control "
+              ref={(ref) => (this.conteudo = ref)}
               id="exampleFormControlTextarea1"
               rows="30"
             ></textarea>
@@ -67,6 +110,7 @@ class Novo extends Component {
               <input
                 type="text"
                 className="form-control"
+                ref={(ref) => (this.direcao = ref)}
                 id="formGroupExampleInput"
               />
 
@@ -74,6 +118,7 @@ class Novo extends Component {
               <input
                 type="text"
                 className="form-control"
+                ref={(ref) => (this.fotografia = ref)}
                 id="formGroupExampleInput"
               />
             </div>
@@ -82,17 +127,19 @@ class Novo extends Component {
               <input
                 type="text"
                 className="form-control"
+                ref={(ref) => (this.roteiro = ref)}
                 id="formGroupExampleInput"
               />
               <label for="formGroupExampleInput">Atuação</label>
               <input
                 type="text"
                 className="form-control"
+                ref={(ref) => (this.atuacao = ref)}
                 id="formGroupExampleInput"
               />
             </div>
           </div>
-          <button type="button" className="btn btn-success mt-4">
+          <button type="submit" className="btn btn-success mt-4">
             Enviar
           </button>
         </form>
