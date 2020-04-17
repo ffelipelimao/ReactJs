@@ -43,7 +43,6 @@ class Novo extends Component {
         roteiro: this.roteiro.value,
       },
     };
-    console.log(filme);
     axios
       .post(api.baseUrl, filme)
       .then((res) => {

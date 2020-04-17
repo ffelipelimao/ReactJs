@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
 const api = {
-  baseUrl: "http://localhost:8080/critica/"
+  baseUrl: "http://localhost:8080/critica/",
 };
 
 class CardUI extends Component {
@@ -14,8 +14,8 @@ class CardUI extends Component {
 
   verFilme() {
     const url = `${api.baseUrl}${this.props.idmovie}`;
-    axios.get(url).then(res => {
-      console.log(res.data);
+    axios.get(url).then((res) => {
+      this.props.verselect(res.data);
     });
   }
 

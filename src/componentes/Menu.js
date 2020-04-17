@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
-const Menu = props => {
+import CardPOS from "./Card/CardPOS";
+
+const Menu = (props) => {
   return (
     <div className="fixed-top">
       <nav className="navbar navbar-light">
